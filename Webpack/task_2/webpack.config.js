@@ -18,13 +18,17 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif)$/,
-        loader: 'url-loader',
-        options: {
-          // Images larger than 10 KB won’t be inlined
-          limit: 10 * 1024
-        }
-      }
-
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true, // webpack@1.x
+              disable: true, // webpack@2.x and newer
+            },
+          },
+        ],
+      },
     ],
   },
 };
