@@ -13,15 +13,15 @@ module.exports = {
   mode: 'development',
   entry: {
     header: {
-      import: './js/header.js',
+      import: './modules/header/header.js',
       dependOn: 'shared',
     },
     body: {
-      import: './js/body.js',
+      import: './modules/body/body.js',
       dependOn: 'shared',
     },
     footer: {
-      import: './js/footer.js',
+      import: './modules/footer/footer.js',
       dependOn: 'shared',
     },
     shared: 'jquery',
