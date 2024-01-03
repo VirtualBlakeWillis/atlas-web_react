@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 
 /* Modify the webpack config to support adding images to the CSS. */
@@ -28,7 +29,7 @@ module.exports = {
 
   },
   devServer: {
-    static: {directory: path.resolve(__dirname, 'public'), },
+    contentBase: {directory: path.resolve(__dirname, 'public'), },
     compress: true,
     port: 8564,
 
@@ -37,7 +38,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Holberton Dashboard',
     }),
+    new CleanWebpackPlugin(),
+
   ],
+  devtool: 'inline-source-map',
+  chunks: 'all',
   optimization: {
     runtimeChunk: 'single',
   },
