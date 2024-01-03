@@ -29,7 +29,7 @@ module.exports = {
 
   },
   devServer: {
-    contentBase: {directory: path.resolve(__dirname, 'public'), },
+    contentBase: path.resolve(__dirname, 'public'),
     compress: true,
     port: 8564,
 
