@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.App-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  color: red;
+  border-bottom: 5px solid red;
+}
+.App-header img {
+  height: 200px;
+  margin-right: 10px;
+}
+
+.App-body {
+  display: flex;
+  justify-content: flex-start;
+  padding: 50px;
+  min-height: 50vh;
+  border-bottom: 5px solid red;
+}
+
+.App-footer p {
+  font-style: italic;
+}
