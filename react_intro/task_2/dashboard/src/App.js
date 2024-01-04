@@ -8,14 +8,16 @@ function App() {
         <img src={holberton_logo} alt="logo" />
         <h1>School Dashboard</h1>
       </header>
-      <body className="App-body">
+      <div className="App-body">
         <p>Login to access the full dashboard</p>
-        <label htmlFor="email">Email: </label>
-        <input type="email" id="email" />
-        <label htmlFor="password">Password: </label>
-        <input type="password" id="password" />
-        <button>OK</button>
-      </body>
+        <div className="input-wrapper">
+          <label htmlFor="email">Email: </label>
+          <input type="email" id="email" />
+          <label htmlFor="password">Password: </label>
+          <input type="password" id="password" />
+          <button>OK</button>
+        </div>
+      </div>
       <footer className="App-footer">
         <p>Copyright 2020 - holberton School</p>
       </footer>

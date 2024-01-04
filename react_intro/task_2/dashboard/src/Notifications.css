@@ -2,4 +2,14 @@
 .Notifications {
   padding: 20px;
   border: 2px solid red;
+  position: relative;
+}
+
+
+li[data-priority="default"] {
+  color: blue;
+}
+
+li[data-priority="urgent"] {
+  color: red;
 }
