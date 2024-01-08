@@ -1,4 +1,4 @@
-import holberton_logo from './holberton_logo.jpeg';
+import holberton_logo from '../assets/holberton_logo.jpeg';
 import './App.css';
 import React from 'react';
 
