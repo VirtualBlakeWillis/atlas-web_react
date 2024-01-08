@@ -3,24 +3,30 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
+
   entry: {
-    main: './js/dashboard_main.js',
+    main: './src/index.js',
   },
+
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
   },
+
   devServer: {
-    contentBase: './public',
+    static: {
+      directory: path.join(__dirname, '../dist'), // replaces contentBase
+    },
     compress: true,
+    hot: true,
     port: 8564,
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Holberton Dashboard',
-    }),
-  ],
+
   devtool: 'inline-source-map',
+
+
+  mode: 'development',
+
   module: {
     rules: [
       {
@@ -36,12 +42,19 @@ module.exports = {
           },
         ],
       },
+
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
+      },
+
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
       },
     ],
   },
-  mode: 'production',
-
 };

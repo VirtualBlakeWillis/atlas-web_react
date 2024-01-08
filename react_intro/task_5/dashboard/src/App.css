@@ -1,0 +1,48 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.App-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  color: red;
+  border-bottom: 5px solid red;
+}
+.App-header img {
+  height: 200px;
+  margin-right: 10px;
+}
+
+.App-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 50px;
+  min-height: 50vh;
+}
+.input-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.input-wrapper input {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+
+.App-footer {
+  border-top: 5px solid red;
+  position: relative;
+  bottom: 0;
+}
+.App-footer p {
+  font-style: italic;
+}
