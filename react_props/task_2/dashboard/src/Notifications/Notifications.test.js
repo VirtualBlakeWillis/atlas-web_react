@@ -19,4 +19,9 @@ describe('Notifications', () => {
     const wrapper = shallow(<Notifications />);
     expect(wrapper.find('p').text()).toEqual('Here is the list of notifications');
   });
+
+  it('first NotificationItem child renders the correct html', () => {
+    const wrapper = shallow(<Notifications />);
+    expect(wrapper.find('NotificationItem').first().html()).toEqual('<li data-notification-type="default">New course available</li>');
+  });
 });
