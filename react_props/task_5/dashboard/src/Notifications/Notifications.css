@@ -1,0 +1,21 @@
+li[data-notification-type="default"] {
+  color: blue;
+}
+
+.Notifications {
+  padding: 20px;
+  border: 2px dashed red;
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  width: fit-content;
+}
+
+.menuItem {
+  float: right;
+  margin-right: 30px;
+}
+
+li[data-notification-type="urgent"] {
+  color: red;
+}
