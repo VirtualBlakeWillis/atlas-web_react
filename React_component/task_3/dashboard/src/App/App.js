@@ -7,6 +7,8 @@ import Login from '../Login/Login.js';
 import Notifications from '../Notifications/Notifications.js';
 import CourseList from '../CourseList/CourseList.js';
 import PropTypes from 'prop-types';
+import BodySection from '../BodySection/BodySection.js';
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom.js';
 
 const appDefaults = {
   isLoggedIn: false,
@@ -67,7 +69,17 @@ class App extends React.Component {
       <Notifications listNotifications={listNotifications}/>
       <div className="App">
         <Header />
-        {this.props.isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
+        { this.props.isLoggedIn 
+        ? <BodySectionWithMarginBottom title='Course list'>
+            <CourseList listCourses={listCourses} /> 
+          </BodySectionWithMarginBottom>
+        : <BodySectionWithMarginBottom title='Log in to continue'>
+            <Login />
+          </BodySectionWithMarginBottom>
+        }
+        <BodySection title='News from the School'>
+          <p>Some random text</p>
+        </BodySection>
         <Footer />
       </div>
     </>
