@@ -4,6 +4,8 @@ import CourseListRow from "../CourseListRow/CourseListRow";
 import "./CourseList.css";
 import CourseShape from "./CourseShape";
 
+import { StyleSheet, css } from "aphrodite";
+
 const CourseList = ({listCourses}) => {
   return (
     <table id="CourseList">
