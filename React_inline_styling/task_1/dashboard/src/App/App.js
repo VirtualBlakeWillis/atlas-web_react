@@ -97,7 +97,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     display: 'flex',
     flexDirection: 'column',
-  }
+  },
+  body: {},
+  footer: {},
 });
 
 export default App;
