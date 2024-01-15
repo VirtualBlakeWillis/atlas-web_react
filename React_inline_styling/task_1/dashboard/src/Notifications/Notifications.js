@@ -1,11 +1,11 @@
 import React from 'react';
-import './Notifications.css';
 import close_icon from '../assets/close-icon.png';
 import { getLatestNotification } from '../utils/utils';
 import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types';
 import NotificationItemShape from './NotificationItemShape';
 
+import { StyleSheet, css } from 'aphrodite';
 
 
 class Notifications extends React.Component {
@@ -26,9 +26,9 @@ class Notifications extends React.Component {
   render() {
     return (
       <>
-        <div className="menuItem">Your notifications</div>
+        <div className={css(styles.menuItem)}>Your notifications</div>
         {this.props.displayDrawer ? (
-        <div className="Notifications">
+        <div className={css(styles.Notifications)}>
           <button style={{right: '18px', position: 'absolute'}} aria-label='Close' onClick={() => {console.log('Close button has been clicked')}}>
             <img src={close_icon} alt='close-icon' style={{width: '8px'}}/>
           </button>
@@ -39,7 +39,7 @@ class Notifications extends React.Component {
             <NotificationItem value='No new notification for now' func={() => {this.markAsRead(notification.id)}}/>
             :
             this.props.listNotifications.map((notification) => {
-              return <NotificationItem key={notification.id} type={notification.type} value={notification.value} html={notification.html} func={() => {this.markAsRead(notification.id)}}/>
+              return <NotificationItem  key={notification.id} type={notification.type} value={notification.value} html={notification.html} func={() => {this.markAsRead(notification.id)}}/>
             })
             }
           </ul>
@@ -59,5 +59,28 @@ Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape)
 };
+
+
+const styles = StyleSheet.create({
+  menuItem: {
+    float: 'right',
+    marginRight: '30px'
+  },
+  Notifications: {
+    padding: '20px',
+    border: '2px dashed red',
+    position: 'absolute',
+    right: '40px',
+    top: '40px',
+    width: 'fit-content'
+  },
+  default: {
+    color: 'blue'
+  },
+  urgent: {
+    color: 'red'
+  }
+});
+
 
 export default Notifications;

@@ -1,5 +1,4 @@
 import holberton_logo from '../assets/holberton_logo.jpeg';
-import './App.css';
 import React from 'react';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
@@ -9,6 +8,9 @@ import CourseList from '../CourseList/CourseList.js';
 import PropTypes from 'prop-types';
 import BodySection from '../BodySection/BodySection.js';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom.js';
+
+import {StyleSheet, css} from 'aphrodite';
+
 
 const appDefaults = {
   isLoggedIn: false,
@@ -67,7 +69,7 @@ class App extends React.Component {
     return (
     <>
       <Notifications listNotifications={listNotifications}/>
-      <div className="App">
+      <div className={css(styles.App)}>
         <Header />
         { this.props.isLoggedIn 
         ? <BodySectionWithMarginBottom title='Course list'>
@@ -88,5 +90,14 @@ class App extends React.Component {
  }
 
 App.defaultProps = appDefaults;
+
+const styles = StyleSheet.create({
+  App: {
+    fontFamily: 'sans-serif',
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+  }
+});
 
 export default App;
