@@ -8,7 +8,7 @@ import { StyleSheet, css } from "aphrodite";
 
 const CourseList = ({listCourses}) => {
   return (
-    <table id="CourseList">
+    <table className={css(styles.CourseList)} id="CourseList">
       <thead>
         <CourseListRow isHeader={true} textFirstCell="Available courses" />
         <CourseListRow isHeader={true} textFirstCell="Course name" textSecondCell="Credit" />
@@ -32,10 +32,13 @@ CourseList.defaultProps = {
   listCourses: []
 };
 
+
+
 const styles = StyleSheet.create({
   CourseList: {
-    width: "100%",
-    border: "1px solid lightgray"
+    border: "1px solid #ddd",
+    margin: "30px 50px",
+    width: "calc(100% - 100px)",
   }
 });
 
