@@ -32,4 +32,11 @@ CourseList.defaultProps = {
   listCourses: []
 };
 
+const styles = StyleSheet.create({
+  CourseList: {
+    width: "100%",
+    border: "1px solid lightgray"
+  }
+});
+
 export default CourseList;
