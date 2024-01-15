@@ -2,7 +2,12 @@ import React from "react";
 import BodySectionWithMarginBottom from "./BodySectionWithMarginBottom";
 import { shallow } from "enzyme";
 
+import { StyleSheetTestUtils } from "aphrodite";
+
 describe("BodySectionWithMarginBottom", () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
   it("renders without crashing", () => {
     const wrapper = shallow(<BodySectionWithMarginBottom />);
     expect(wrapper.exists()).toBe(true);

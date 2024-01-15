@@ -2,7 +2,12 @@ import React from "react";
 import { shallow } from "enzyme";
 import CourseList from "./CourseList";
 
+import { StyleSheetTestUtils } from "aphrodite";
+
 describe("CourseList", () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
   it("renders correctly", () => {
     const wrapper = shallow(<CourseList />);
     expect(wrapper.find("table#CourseList").exists()).toEqual(true);

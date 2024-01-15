@@ -39,7 +39,7 @@ class Notifications extends React.Component {
             <NotificationItem value='No new notification for now' func={() => {this.markAsRead(notification.id)}}/>
             :
             this.props.listNotifications.map((notification) => {
-              return <NotificationItem  key={notification.id} type={notification.type} value={notification.value} html={notification.html} func={() => {this.markAsRead(notification.id)}}/>
+              return <NotificationItem key={notification.id} type={notification.type} value={notification.value} html={notification.html} func={() => {this.markAsRead(notification.id)}}/>
             })
             }
           </ul>

@@ -2,7 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import CourseListRow from './CourseListRow';
 
+import { StyleSheetTestUtils } from 'aphrodite';
+
 describe('CourseListRow', () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
   /* when isHeader is true */
   it('renders correctly when isHeader is true and textSecondCell is null', () => {
     const wrapper = shallow(

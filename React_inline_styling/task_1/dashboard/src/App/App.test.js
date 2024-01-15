@@ -4,6 +4,8 @@ import React from 'react';
 import jsdom from 'jsdom';
 import App from './App';
 
+import { StyleSheetTestUtils } from 'aphrodite';
+
 const { JSDOM } = jsdom;
 
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
@@ -11,6 +13,9 @@ global.window = window;
 global.document = window.document;
 
 describe('App', () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
   /* renders App component without crashing */
   it('renders App component without crashing', () => {
     const wrapper = shallow(<App />);

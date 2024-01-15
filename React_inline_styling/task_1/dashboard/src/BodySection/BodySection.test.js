@@ -2,7 +2,12 @@ import React from "react";
 import BodySection from "./BodySection";
 import { shallow } from "enzyme";
 
+import { StyleSheetTestUtils } from "aphrodite";
+
 describe("BodySection", () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
   it("renders without crashing", () => {
     const wrapper = shallow(<BodySection />);
     expect(wrapper.exists()).toBe(true);
