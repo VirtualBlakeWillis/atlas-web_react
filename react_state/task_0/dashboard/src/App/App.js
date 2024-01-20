@@ -104,7 +104,6 @@ class App extends React.Component {
         }
         <BodySection title='News from the School'>
           <p>Some random text</p>
-          <button onClick={this.handleDisplayDrawer}>Display drawer</button>
         </BodySection>
         <Footer />
       </div>
