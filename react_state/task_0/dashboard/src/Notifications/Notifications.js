@@ -67,8 +67,8 @@ class Notifications extends React.Component {
 Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: [],
-  handleDisplayDrawer: () => undefined,
-  handleHideDrawer: () => undefined,
+  handleDisplayDrawer: () => {},
+  handleHideDrawer: () => {},
 };
 
 Notifications.propTypes = {

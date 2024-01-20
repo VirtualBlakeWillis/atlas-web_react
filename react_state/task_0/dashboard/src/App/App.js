@@ -47,10 +47,7 @@ class App extends React.Component {
   }
 
   handleDisplayDrawer() {
-    console.log(this.state.displayDrawer)
     this.setState({displayDrawer: true});
-    console.log('displayDrawer updated')
-    console.log(this.state.displayDrawer)
   }
   handleHideDrawer() {
     this.setState({displayDrawer: false});
@@ -83,12 +80,15 @@ class App extends React.Component {
     document.removeEventListener('keyup', this.handleKeyUp);    
   }
 
+
   render() {
+    const { displayDrawer } = this.state;
+
     return (
     <>
       <Notifications
       listNotifications={listNotifications}
-      displayDrawer={this.state}
+      displayDrawer={displayDrawer}
       handleDisplayDrawer={this.handleDisplayDrawer.bind(this)}
       handleHideDrawer={this.handleHideDrawer.bind(this)}
       />
