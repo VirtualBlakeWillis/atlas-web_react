@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { StyleSheet, css } from 'aphrodite';
-import { useState, useEffect } from 'react';
 
 class Login extends React.Component {
   constructor(props) {
