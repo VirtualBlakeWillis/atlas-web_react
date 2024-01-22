@@ -53,48 +53,6 @@ class Login extends React.Component {
     );
   }
 }
-
-// function Login() {
-//   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
-//   const [ email, setEmail ] = useState('');
-//   const [ password, setPassword ] = useState('');
-//   const [ enableSubmit, setEnableSubmit ] = useState(false);
-
-//   const handleLoginSubmit = (e) => {
-//     e.preventDefault();
-//     setIsLoggedIn(true);
-//   }
-//   const handleEmailChange = (e) => {
-//     setEmail(e.target.value);
-//   }
-//   const handlePasswordChange = (e) => {
-//     setPassword(e.target.value);
-//   }
-
-//   useEffect(() => {
-//     if (email !== '' && password !== '') {
-//       setEnableSubmit(true);
-//     } else {
-//       setEnableSubmit(false);
-//     }
-//   }, [email, password]);
-
-//   return (
-//     <div className={css(styles.AppBody)}>
-//       <p>Login to access the full dashboard</p>
-//       <form
-//       className={css(styles.inputWrapper, styles.small)}
-//       onSubmit={handleLoginSubmit}
-//       >
-//         <label htmlFor="email">Email: </label>
-//         <input className={css(styles.inputWrapperInput)} type="email" id="email" value={email} onChange={handleEmailChange}/>
-//         <label htmlFor="password">Password: </label>
-//         <input className={css(styles.inputWrapperInput)} type="password" id="password" value={password} onChange={handlePasswordChange} />
-//         <input type="submit" id="submit" disabled={!enableSubmit}/>
-//       </form>
-//     </div>
-//   );
-// }
 const styles = StyleSheet.create({
   AppBody: {
     display: 'flex',
