@@ -15,7 +15,7 @@ import {StyleSheet, css} from 'aphrodite';
 
 import { useState } from 'react';
 
-import AppContext from './AppContext.js';
+import { AppContext } from './AppContext.js';
 
 
 const appDefaults = {
@@ -47,7 +47,7 @@ class App extends React.Component {
         password: '',
         isLoggedIn: false
       },
-      logOut: () => undefined,
+      logOut: this.logOut.bind(this),
       ctrlPressed: false,
       displayDrawer: false,
      }
@@ -101,11 +101,13 @@ class App extends React.Component {
 
   render() {
     const { displayDrawer } = this.state;
-    const { isLoggedIn } = this.state.user;
     const { logIn } = this;
+    const { user, logOut } = this.state;
+    const { isLoggedIn } = user ? user : false;
 
     return (
-    <>
+ 
+    <AppContext.Provider value={{user, logOut: logOut}}>
       <Notifications
       listNotifications={listNotifications}
       displayDrawer={displayDrawer}
@@ -127,7 +129,7 @@ class App extends React.Component {
         </BodySection>
         <Footer />
       </div>
-    </>
+    </AppContext.Provider>
     );
   };
  }
@@ -144,6 +146,7 @@ const styles = StyleSheet.create({
   body: {},
   footer: {},
 });
+
 
 
 export default App;

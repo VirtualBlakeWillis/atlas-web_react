@@ -4,6 +4,8 @@ import React from 'react';
 import jsdom from 'jsdom';
 import App from './App';
 
+import { AppContext } from './AppContext';
+
 import { StyleSheetTestUtils } from 'aphrodite';
 
 const { JSDOM } = jsdom;
@@ -18,43 +20,64 @@ describe('App', () => {
   });
   /* renders App component without crashing */
   it('renders App component without crashing', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(
+      <AppContext.Provider value={{user: {email: '', password: '', isLoggedIn: false}, logOut: () => undefined}}>
+        <App />
+      </AppContext.Provider>
+    );
     expect(wrapper.exists()).toBe(true);
   });
 
   /* renders Login component */
   it('renders Login component', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(
+        <App />
+    );
     expect(wrapper.find('Login')).toHaveLength(1);
   });
 
   /* renders Header component */
   it('renders Header component', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(
+        <App />
+
+    );
     expect(wrapper.find('Header')).toHaveLength(1);
   });
 
   /* renders Footer component */
   it('renders Footer component', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(
+        <App />
+    );
     expect(wrapper.find('Footer')).toHaveLength(1);
   });
 
   /* renders Notifications component */
   it('renders Notifications component', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(
+        <App />
+    );
     expect(wrapper.find('Notifications')).toHaveLength(1);
   });
 
   /* not logged in */
   it('not logged in', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(
+    <AppContext.Provider value={{user: {email: '', password: '', isLoggedIn: false}, logOut: () => undefined}}>
+      <App />
+    </AppContext.Provider>
+    );
     expect(wrapper.find('CourseList')).toHaveLength(0);
   });
 
   /* logged in */
   it('logged in', () => {
-    const wrapper = shallow(<App isLoggedIn={true} />);
+    const wrapper = mount(
+      <AppContext.Provider value={{user: {email: '', password: '', isLoggedIn: true}, logOut: () => undefined}}>
+      <App />
+    </AppContext.Provider>
+    );
     expect(wrapper.find('Login')).toHaveLength(0);
     expect(wrapper.find('CourseList')).toHaveLength(1);
   });
@@ -79,19 +102,24 @@ describe('App', () => {
 
   /* react_state task_0 */
   it('default state of displayDrawer is false', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = mount(
+      <AppContext.Provider value={{user: {email: '', password: '', isLoggedIn: false}, logOut: () => undefined}}>
+        <App />
+      </AppContext.Provider>
+    )
+    ;
     expect(wrapper.state().displayDrawer).toEqual(false);
   });
   it('handleDisplayDrawer updates state correctly', () => {
     const wrapper = shallow(<App />);
     wrapper.instance().handleDisplayDrawer();
-    expect(wrapper.state().displayDrawer).toEqual(true);
+    expect(wrapper.state().displayDrawer).toBe(true);
   });
   it('handleHideDrawer updates state correctly after first calling handleDisplayDrawer', () => {
     const wrapper = shallow(<App />);
     wrapper.instance().handleDisplayDrawer();
     wrapper.instance().handleHideDrawer();
-    expect(wrapper.state().displayDrawer).toEqual(false);
+    expect(wrapper.state().displayDrawer).toBe(false);
   });
 
 });
