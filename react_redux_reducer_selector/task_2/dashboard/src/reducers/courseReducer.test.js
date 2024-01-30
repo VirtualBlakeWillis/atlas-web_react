@@ -1,14 +1,14 @@
 import courseReducer from "./courseReducer";
-import { SELECT_COURSE, UNSELECT_COURSE, FETCH_COURSES_SUCCESS } from "../actions/courseActionTypes";
+import { SELECT_COURSE, UNSELECT_COURSE, FETCH_COURSE_SUCCESS } from "../actions/courseActionTypes";
 
 describe("courseReducer", () => {
 	it('default state returns an empty array', () => {
 		const newState = courseReducer([], {});
 		expect(newState).toEqual([]);
 	});
-	it('FETCH_COURSES_SUCCESS returns the correct state', () => {
+	it('FETCH_COURSE_SUCCESS returns the correct state', () => {
 		const action = {
-			type: FETCH_COURSES_SUCCESS,
+			type: FETCH_COURSE_SUCCESS,
 			data: [
 				{
 					id: 1,

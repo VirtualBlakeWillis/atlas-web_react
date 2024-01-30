@@ -1,10 +1,10 @@
-import { SELECT_COURSE, UNSELECT_COURSE, FETCH_COURSES_SUCCESS } from "../actions/courseActionTypes";
+import { SELECT_COURSE, UNSELECT_COURSE, FETCH_COURSE_SUCCESS } from "../actions/courseActionTypes";
 
 
 
 export default function courseReducer(state = [], action) {
 	switch (action.type) {
-		case FETCH_COURSES_SUCCESS:
+		case FETCH_COURSE_SUCCESS:
 			console.log(action)
 			return action.data.map((course) => {
 				return {
