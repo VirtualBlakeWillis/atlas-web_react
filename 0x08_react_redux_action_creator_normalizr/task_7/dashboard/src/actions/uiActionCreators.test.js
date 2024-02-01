@@ -1,9 +1,10 @@
+import { enableFetchMocks } from 'jest-fetch-mock'
+enableFetchMocks()
 import { login, logout, displayNotificationDrawer, hideNotificationDrawer, loginRequest } from "./uiActionCreators";
 import configureMockStore from 'redux-mock-store';
-import fetchMock from 'jest-fetch-mock';
-import thunk from 'redux-thunk';
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+import { thunk } from 'redux-thunk';
+import { applyMiddleware } from 'redux';
+const mockStore = configureMockStore([thunk]);
 
 
 
@@ -48,22 +49,23 @@ describe("uiActionCreators", () => {
       expect(action).toEqual(expected);
     });
   });
-  // describe("loginRequest", () => {
-  //   it("returns the correct action", () => {
-  //     fetchMock.get('http://localhost:3000/login-success.json', 200);
-  //     const store = mockStore({});
-  //     store.dispatch(loginRequest("test@test", "test")).then(() => {
-  //       expect(store.getActions()[0]).toEqual({
-  //         type: "LOGIN",
-  //         user: {
-  //           email: "test@test",
-  //           password: "test"
-  //         }
-  //       });
-  //     }
-  //     );
-  //     fetchMock.reset();
+  describe("loginRequest", () => {
+    it("returns the correct action", () => {
+      fetch.mockResponseOnce(JSON.stringify({}));
+
+      fetch('http://localhost:3000/login-success.json');
+      const store = mockStore({});
+      store.dispatch(loginRequest("test@test", "test")).then(() => {
+        expect(store.getActions()[0]).toEqual({
+          type: "LOGIN",
+          user: {
+            email: "test@test",
+            password: "test"
+          }
+        });
+      }
+      );
     
-  //   });
-  // });
+    });
+  });
 });
