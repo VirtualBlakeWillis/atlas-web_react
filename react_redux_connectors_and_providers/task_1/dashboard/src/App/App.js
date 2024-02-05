@@ -48,12 +48,12 @@ class App extends React.Component {
         password: '',
         isLoggedIn: false
       },
-      logOut: this.logOut.bind(this),
+      logOut: this.logOut,
       ctrlPressed: false,
       listNotifications: listNotifications,
      }
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleKeyUp = this.handleKeyUp.bind(this);  
+    this.handleKeyDown = this.handleKeyDown;
+    this.handleKeyUp = this.handleKeyUp;  
   }
 
   markNotificationAsRead(id) {
