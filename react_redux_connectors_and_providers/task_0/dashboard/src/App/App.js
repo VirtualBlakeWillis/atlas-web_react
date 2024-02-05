@@ -18,8 +18,6 @@ import { AppContext } from './AppContext.js';
 import { uiReducer } from '../reducers/uiReducer.js'
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => ({isLoggedIn: state.isUserLoggedIn});
-const connectedApp = connect(mapStateToProps)(App);
 
 
 const appDefaults = {
@@ -155,6 +153,8 @@ const styles = StyleSheet.create({
 });
 
 
+const mapStateToProps = (state) => ({isLoggedIn: state.isUserLoggedIn});
+const connectedApp = connect(mapStateToProps)(App);
 
 export default App;
-export { connectedApp }
+export { connectedApp, mapStateToProps }

@@ -3,6 +3,8 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 import jsdom from 'jsdom';
 import App from './App';
+import { mapStateToProps } from './App';
+import { fromJS } from 'immutable';
 
 import { AppContext } from './AppContext';
 
@@ -121,5 +123,19 @@ describe('App', () => {
     wrapper.instance().handleHideDrawer();
     expect(wrapper.state().displayDrawer).toBe(false);
   });
+
+});
+
+describe('mapStateToProps', () => {
+  it('returns the corret object', () => {
+    let state = {
+      isUserLoggedIn: true
+    };
+    let expected = {
+      isLoggedIn: true
+    }
+    const result = mapStateToProps(state);
+    expect(result).toEqual(expected)
+  })
 
 });
