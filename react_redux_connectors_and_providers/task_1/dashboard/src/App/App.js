@@ -50,7 +50,6 @@ class App extends React.Component {
       },
       logOut: this.logOut.bind(this),
       ctrlPressed: false,
-      displayDrawer: false,
       listNotifications: listNotifications,
      }
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -67,13 +66,6 @@ class App extends React.Component {
 
   logOut() {
     this.setState({user: this.context.user});
-  }
-
-  handleDisplayDrawer() {
-    this.setState({displayDrawer: true});
-  }
-  handleHideDrawer() {
-    this.setState({displayDrawer: false});
   }
 
 
