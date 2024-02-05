@@ -2,13 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App/App';
 import Notifications from './Notifications/Notifications';
+import { createStore } from 'redux';
+import uiReducer from './reducers/uiReducer';
+import { Provider } from 'react-redux';
+
+const store = createStore(uiReducer)
 
 // Root for the main app
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
 // // Root for the notifications
