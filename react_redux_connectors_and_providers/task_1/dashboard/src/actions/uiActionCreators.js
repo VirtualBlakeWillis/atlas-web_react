@@ -1,5 +1,5 @@
 import {LOGIN, LOGOUT, DISPLAY_NOTIFICATION_DRAWER, HIDE_NOTIFICATION_DRAWER, LOGIN_SUCCESS, LOGIN_FAILURE} from './uiActionTypes';
-import { UseDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export const login = (email, password) => {
   return {
@@ -57,7 +57,7 @@ export const hideNotificationDrawer = () => {
   };
 }
 
-export const boundLogin = (email, password) => UseDispatch(login(email, password));
-export const boundLogout = () => UseDispatch(logout());
-export const boundDisplayNotificationDrawer = () => UseDispatch(displayNotificationDrawer());
-export const boundHideNotificationDrawer = () => UseDispatch(hideNotificationDrawer());
+export const boundLogin = (email, password) => useDispatch(login(email, password));
+export const boundLogout = () => useDispatch(logout());
+export const boundDisplayNotificationDrawer = () => useDispatch(displayNotificationDrawer());
+export const boundHideNotificationDrawer = () => useDispatch(hideNotificationDrawer());

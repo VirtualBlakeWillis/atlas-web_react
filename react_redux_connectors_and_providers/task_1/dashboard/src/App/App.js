@@ -154,7 +154,7 @@ const mapStateToProps = (state) => ({
   isLoggedIn: state.isUserLoggedIn,
   displayDrawer: state.isNotificationDrawerVisible
 });
-const connectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default App;
-export { connectedApp, mapStateToProps }
+export { ConnectedApp, mapStateToProps }
