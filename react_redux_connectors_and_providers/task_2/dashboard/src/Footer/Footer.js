@@ -3,12 +3,9 @@ import './Footer.css';
 import { AppContext } from '../App/AppContext';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => ({
-  user: state.user
-})
 
-function Footer() {
-  const user = props.user
+
+function Footer({ user }) {
   return (
       <footer className="App-footer">
         <p id='p1'>Copyright 2020 - holberton School</p>
@@ -16,5 +13,10 @@ function Footer() {
       </footer>
       )
 }
+
+export const mapStateToProps = (state) => {
+  const isLoggedIn = state.get("isUserLoggedIn", false);
+  return { user: { isLoggedIn } };
+};
 
 export default connect(mapStateToProps)(Footer);

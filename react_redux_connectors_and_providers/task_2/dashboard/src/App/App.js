@@ -17,6 +17,7 @@ import { useState } from 'react';
 import { AppContext } from './AppContext.js';
 import { uiReducer } from '../reducers/uiReducer.js'
 import { connect } from 'react-redux';
+import { bindActionCreators } from '@reduxjs/toolkit';
 
 import { displayNotificationDrawer, hideNotificationDrawer, loginRequest } from '../actions/uiActionCreators.js';
 
@@ -53,8 +54,8 @@ class App extends React.Component {
       ctrlPressed: false,
       listNotifications: listNotifications,
      }
-    this.handleKeyDown = this.handleKeyDown;
-    this.handleKeyUp = this.handleKeyUp;  
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);  
   }
 
   markNotificationAsRead(id) {
@@ -100,9 +101,8 @@ class App extends React.Component {
 
   render() {
     const { displayDrawer } = this.props;
-    const { logIn } = this.props.loginRequest;
     const { user, logOut, listNotifications } = this.state;
-    const { isLoggedIn } = user ? user : false;
+    const { isLoggedIn } = this.props
 
     return (
  
@@ -121,7 +121,7 @@ class App extends React.Component {
             <CourseList listCourses={listCourses} /> 
           </BodySectionWithMarginBottom>
         : <BodySectionWithMarginBottom title='Log in to continue'>
-            <Login logIn={logIn.bind(this)}/>
+            <Login logIn={this.props.login}/>
           </BodySectionWithMarginBottom>
         }
         <BodySection title='News from the School'>
@@ -146,17 +146,19 @@ const styles = StyleSheet.create({
   body: {},
   footer: {},
 });
-const mapDispatchToProps = {
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
   displayNotificationDrawer,
   hideNotificationDrawer,
-  loginRequest
+  login: loginRequest,
+  }, dispatch);
 }
 
 const mapStateToProps = (state) => ({
-  isLoggedIn: state.isUserLoggedIn,
-  displayDrawer: state.isNotificationDrawerVisible
+  isLoggedIn: state.get('isUserLoggedIn', false),
+  displayDrawer: state.get('isNotificationDrawerVisible', false)
 });
 const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 export { ConnectedApp, mapStateToProps }

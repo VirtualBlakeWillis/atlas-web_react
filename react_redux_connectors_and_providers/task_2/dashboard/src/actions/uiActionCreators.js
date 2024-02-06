@@ -29,7 +29,7 @@ export const loginFailure = () => {
 export const loginRequest = (email, password) => {
   return (dispatch) => {
     dispatch(login(email, password));
-    return fetch(`http://localhost:3000/login-success.json`)
+    return fetch('/login-success.json')
       .then((response) => {
         if (response.ok) {
           return response.json();

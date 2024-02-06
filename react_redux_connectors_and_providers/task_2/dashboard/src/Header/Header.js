@@ -4,11 +4,21 @@ import holberton_logo from '../assets/holberton_logo.jpeg';
 import {StyleSheet, css} from 'aphrodite';
 
 import { AppContext } from '../App/AppContext';
+import { connect } from 'react-redux';
+import { logout } from '../actions/uiActionCreators';
+
+const mapStateToProps = (state) => {
+  const isLoggedIn = state.get('isUserLoggedIn', false);
+  const email = state.getIn(['user', 'email']);
+  return ({user: {isLoggedIn, email}})
+}
+const mapDispatchToProps = {
+  logOut: logout,
+}
 
 
-function Header() {
+function Header({user, logOut}) {
 
-  const { user, logOut } = React.useContext(AppContext);
 
   return (
     <>
@@ -36,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Header;
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
