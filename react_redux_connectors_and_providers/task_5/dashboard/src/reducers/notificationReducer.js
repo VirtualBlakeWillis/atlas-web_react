@@ -11,7 +11,7 @@ const initialState = Map({
 export default function notificationReducer(state = initialState, action) {
   switch(action.type) {
     case FETCH_NOTIFICATIONS_SUCCESS:
-      return state.mergeDeep(notificationsNormalizer(action.payload));
+      return state.merge(notificationsNormalizer(action.payload));
     case MARK_AS_READ:
       return state.setIn(['notifications', action.payload, 'isRead'], true);
     case SET_TYPE_FILTER:

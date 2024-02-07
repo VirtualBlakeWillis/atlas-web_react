@@ -3,7 +3,6 @@ import close_icon from '../assets/close-icon.png';
 import { getLatestNotification } from '../utils/utils';
 import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types';
-import NotificationItemShape from './NotificationItemShape';
 
 import { StyleSheet, css } from 'aphrodite';
 import { connect } from 'react-redux';
@@ -15,7 +14,6 @@ class Notifications extends React.Component {
   constructor(props) {
     super(props);
     this.state
-    this.markAsRead = this.props.markAsRead.bind(this);
   }
   
   componentDidMount() {
@@ -69,7 +67,6 @@ Notifications.defaultProps = {
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
-  listNotifications: PropTypes.arrayOf(NotificationItemShape),
   handleDisplayDrawer: PropTypes.func,
   handleHideDrawer: PropTypes.func,
 };
@@ -114,7 +111,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: '40px',
     top: '40px',
-    width: 'fit-content'
+    width: '30vw',
+    backgroundColor: 'white'
   },
   default: {
     color: 'blue'
@@ -145,7 +143,15 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   const notificationReducer = state.notifications;
-  const listNotifications = notificationReducer.getIn(['notification', 'message']);
+  const listNotifications = notificationReducer.getIn([ 'entities', 'messages']);
+  console.log(state.notifications)
+  const newList = []
+  if (listNotifications) {
+    for (let x of Object.values(listNotifications)) {
+      newList.push(x);
+    }
+    return ({listNotifications: newList});
+  }
 
   return ({listNotifications})
 }

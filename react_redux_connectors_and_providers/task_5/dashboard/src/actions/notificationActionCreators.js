@@ -26,7 +26,9 @@ export const fetchNotifications = () => {
   return (dispatch) => {
     dispatch(setLoadingState(true));
     fetch('/notifications.json')
+    .then((data) => (data.json()))
     .then((data) => {
+      console.log(data);
       dispatch(setNotifications(data))
     })
     .finally(()=> {

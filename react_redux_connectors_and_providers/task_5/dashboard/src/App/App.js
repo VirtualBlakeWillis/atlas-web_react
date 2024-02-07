@@ -33,11 +33,6 @@ const listCourses = [
   {id: 2, name: 'Webpack', credit: 20},
   {id: 3, name: 'React', credit: 40},
 ];
-const listNotifications = [
-  {id: 1, type: 'default', value: 'New course available'},
-  {id: 2, type: 'urgent', value: 'New resume available'},
-  {id: 3, type: 'urgent', html: {__html: '<strong>Urgent requirement</strong> - complete by EOD'}}
-];
 class App extends React.Component {
   static contextType = AppContext;
 
@@ -52,15 +47,11 @@ class App extends React.Component {
       },
       logOut: this.logOut,
       ctrlPressed: false,
-      listNotifications: listNotifications,
      }
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);  
   }
 
-  markNotificationAsRead(id) {
-    this.setState({listNotifications: this.state.listNotifications.filter((notification) => notification.id !== id)});
-  }
 
   /* removed in task 8 of final project */
   // logIn(email, password) {
@@ -112,7 +103,6 @@ class App extends React.Component {
       displayDrawer={displayDrawer}
       handleDisplayDrawer={this.props.displayNotificationDrawer}
       handleHideDrawer={this.props.hideNotificationDrawer}
-      markAsRead={this.markNotificationAsRead.bind(this)}
       />
       <div className={css(styles.App)}>
         <Header />
